@@ -16,19 +16,90 @@
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 
   <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ---- Navbar logo : texte AVANT l'image ---- */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-direction: row;
+    }
+
+    /* Texte en premier, image ensuite */
+    .nav-logo-text {
+      order: 1;
+    }
+
+    .nav-logo-img {
+      order: 2;
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: white;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-icon {
+      order: 2;
+    }
+
+    .nav-logo-text .name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      line-height: 1.25;
+      transition: var(--transition);
+      white-space: normal;
+      max-width: 180px;
+    }
+
+    .nav-logo-text .tagline {
+      font-size: 11px;
+      color: rgba(255,255,255,.65);
+      font-weight: 300;
+      letter-spacing: .3px;
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled .nav-logo-text .name { color: var(--blue-deep); }
+    #navbar.scrolled .nav-logo-text .tagline { color: var(--text-soft); }
+
+    /* ---- Titres réduits ---- */
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 3.2rem) !important;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem) !important;
+    }
+
+    /* ---- Pas de mots orphelins ---- */
+    .hero-title,
+    .section-title,
+    .news-card-body h3,
+    .mission-card h3,
+    .don-text .section-title,
+    .contact-info .section-title {
+      text-wrap: balance;
+    }
+  </style>
 </head>
 <body>
 
   <!-- ===== NAVIGATION ===== -->
   <nav id="navbar">
     <a href="#hero" class="nav-logo">
+      <div class="nav-logo-text">
+        <span class="name">Alliance Internationale<br/>pour le Développement Social</span>
+        <span class="tagline">Association loi 1901 · RNA W922020314</span>
+      </div>
       <img src="images/logo-aids.jpg" alt="Logo AIDS" class="nav-logo-img"
            onerror="this.style.display='none';document.getElementById('nav-icon-fallback').style.display='flex'" />
       <div class="nav-logo-icon" id="nav-icon-fallback" style="display:none;">AIDS</div>
-      <div class="nav-logo-text">
-        <span class="name">Alliance Int'l</span>
-        <span class="tagline">Développement Social</span>
-      </div>
     </a>
 
     <ul class="nav-links">
@@ -91,8 +162,8 @@
         <div class="hero-badge">Association loi 1901 · Déclarée 2023</div>
         <h1 class="hero-title">
           Ensemble pour un<br/>
-          <span>développement</span><br/>
-          humain durable
+          <span>développement humain</span><br/>
+          durable
         </h1>
         <p class="hero-description">
           L'Alliance Internationale pour le Développement Social œuvre pour améliorer les conditions de vie des populations démunies en France et partout dans le monde.
@@ -174,7 +245,7 @@
         <p class="section-desc" style="color:rgba(255,255,255,.6);margin:0 auto;">Une présentation de nos actions, notre équipe et notre vision pour un développement humain durable.</p>
       </div>
       <div class="reveal" style="max-width:800px;margin:0 auto;">
-        <!-- REMPLACEZ par votre iframe YouTube : <iframe width="100%" height="450" src="https://www.youtube.com/embed/VOTRE_ID" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe> -->
+        <!-- REMPLACEZ par : <iframe width="100%" height="450" src="https://www.youtube.com/embed/VOTRE_ID" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe> -->
         <div class="video-placeholder">
           <div class="video-placeholder-inner">
             <div class="video-play-btn">▶</div>
@@ -245,9 +316,9 @@
         <p class="section-desc">Nous agissons sur plusieurs fronts pour créer un impact durable et mesurable sur les populations les plus vulnérables.</p>
       </div>
       <div class="missions-grid">
-        <div class="mission-card reveal"><div class="mission-icon">📚</div><h3>Accès à l'éducation</h3><p>Nous facilitons l'accès à l'éducation des techniques de base — lecture, écriture et calcul — pour les orphelins et personnes isolées socialement.</p></div>
+        <div class="mission-card reveal"><div class="mission-icon">📚</div><h3>Accès à l'éducation</h3><p>Nous facilitons l'accès aux techniques de base — lecture, écriture et calcul — pour les orphelins et personnes isolées socialement.</p></div>
         <div class="mission-card reveal"><div class="mission-icon">🛠️</div><h3>Compétences pour la vie</h3><p>Développement de compétences pratiques et utiles au quotidien pour favoriser l'autonomie et l'insertion sociale des bénéficiaires.</p></div>
-        <div class="mission-card reveal"><div class="mission-icon">🤝</div><h3>Soutien aux personnes isolées</h3><p>Accompagnement spécifique des personnes isolées socialement pour les reconnecter aux ressources et aux opportunités de leur communauté.</p></div>
+        <div class="mission-card reveal"><div class="mission-icon">🤝</div><h3>Soutien aux personnes isolées</h3><p>Accompagnement spécifique des personnes isolées socialement pour les reconnecter aux ressources de leur communauté.</p></div>
         <div class="mission-card reveal"><div class="mission-icon">🌱</div><h3>Développement humain durable</h3><p>Mise en place de programmes à long terme visant une amélioration structurelle et pérenne des conditions de vie.</p></div>
         <div class="mission-card reveal"><div class="mission-icon">👶</div><h3>Protection de l'enfance</h3><p>Actions spécifiques pour les orphelins : hébergement, suivi éducatif, et construction d'un environnement protecteur et bienveillant.</p></div>
         <div class="mission-card reveal"><div class="mission-icon">🌐</div><h3>Action France & Monde</h3><p>Intervention en France et à l'international, avec une présence en Afrique subsaharienne et une diaspora active aux États-Unis.</p></div>
@@ -300,7 +371,6 @@
       </div>
     </div>
 
-    <!-- Carousel pleine largeur -->
     <div class="partners-track-wrap">
       <div class="partners-track">
         <div class="partner-logo-card"><div class="partner-logo-inner">🏛️<span>Orléans Mairie</span></div></div>
@@ -381,7 +451,7 @@
         <div class="don-text">
           <div class="section-label">Agissez avec nous</div>
           <h2 class="section-title">Votre don change des vies</h2>
-          <p class="section-desc">Chaque contribution, quelle que soit son montant, nous permet de financer nos programmes éducatifs et d'accompagnement des personnes vulnérables.</p>
+          <p class="section-desc">Chaque contribution nous permet de financer nos programmes éducatifs et d'accompagnement des personnes vulnérables.</p>
           <br/>
           <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.85;">
             🔒 Paiement 100% sécurisé via HelloAsso<br/>
@@ -391,8 +461,7 @@
           </p>
           <div style="margin-top:28px;">
             <a href="https://www.helloasso.com/associations/aids/formulaires/1"
-               target="_blank" rel="noopener" class="btn-primary"
-               style="display:inline-flex;">
+               target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;">
               💙 Ouvrir la page de don →
             </a>
           </div>
@@ -422,7 +491,7 @@
         <div class="contact-info reveal">
           <div class="section-label">Nous écrire</div>
           <h2 class="section-title">Contactez-nous</h2>
-          <p>Une question, une idée de partenariat, ou vous souhaitez simplement en savoir plus sur nos actions ? Notre équipe est à votre écoute.</p>
+          <p>Une question, une idée de partenariat, ou vous souhaitez en savoir plus sur nos actions ? Notre équipe est à votre écoute.</p>
 
           <div class="contact-detail">
             <div class="contact-detail-icon">📍</div>
@@ -483,9 +552,13 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-          <img src="images/logo-aids.jpg" alt="Logo AIDS" style="width:42px;height:42px;border-radius:8px;object-fit:contain;background:white;padding:2px;"
+          <img src="images/logo-aids.jpg" alt="Logo AIDS"
+               style="width:48px;height:48px;border-radius:8px;object-fit:contain;background:white;padding:2px;"
                onerror="this.style.display='none'" />
-          <div class="nav-logo-text"><span class="name">Alliance Internationale</span><span class="tagline">pour le Développement Social</span></div>
+          <div class="nav-logo-text">
+            <span class="name">Alliance Internationale<br/>pour le Développement Social</span>
+            <span class="tagline">Association loi 1901</span>
+          </div>
         </div>
         <p>Favoriser l'amélioration des conditions de vie des populations démunies en France et partout dans le monde pour un développement humain durable.</p>
       </div>
