@@ -257,7 +257,7 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .hero-text { animation: fadeInUp .8s ease both; }
@@ -390,6 +390,7 @@ img { max-width: 100%; display: block; }
 .hero-visual {
   position: relative;
   animation: fadeInRight .8s .3s ease both;
+  padding-top: 60px;
 }
 
 .hero-card-main {
