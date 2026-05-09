@@ -16,6 +16,40 @@
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 
   <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ===== CORRECTION 1 : Logo agrandi ===== */
+    .nav-logo-img {
+      width: 72px !important;
+      height: 72px !important;
+      object-fit: contain;
+      border-radius: 12px;
+      background: white;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ===== CORRECTION 2 : Titres réduits ===== */
+    .hero-title {
+      font-size: clamp(1.9rem, 3.8vw, 3rem) !important;
+    }
+    .section-title {
+      font-size: clamp(1.4rem, 2.8vw, 2rem) !important;
+    }
+
+    /* ===== CORRECTION 3 : Anti-mots orphelins ===== */
+    .hero-title,
+    .section-title,
+    .don-text .section-title,
+    .contact-info .section-title,
+    .news-card-body h3,
+    .mission-card h3,
+    .rapport-card-body h3,
+    .team-card-info h3 {
+      text-wrap: balance;
+      overflow-wrap: break-word;
+    }
+  </style>
 </head>
 <body>
 
@@ -90,9 +124,7 @@
       <div class="hero-text">
         <div class="hero-badge">Association loi 1901 · Déclarée 2023</div>
         <h1 class="hero-title">
-          Ensemble pour un<br/>
-          <span>développement</span><br/>
-          humain durable
+          Ensemble pour un <span>développement</span> humain durable
         </h1>
         <p class="hero-description">
           L'Alliance Internationale pour le Développement Social œuvre pour améliorer les conditions de vie des populations démunies en France et partout dans le monde.

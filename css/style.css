@@ -100,17 +100,17 @@ img { max-width: 100%; display: block; }
 .nav-logo-text .name {
   font-family: 'Syne', sans-serif;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--white);
   line-height: 1.1;
   transition: var(--transition);
 }
 
 .nav-logo-text .tagline {
-  font-size: 10px;
+  font-size: 11px;
   color: rgba(255,255,255,.7);
   font-weight: 300;
-  letter-spacing: .5px;
+  letter-spacing: .3px;
   transition: var(--transition);
 }
 
@@ -1391,10 +1391,10 @@ footer {
    NAV LOGO IMAGE
    ============================================ */
 .nav-logo-img {
-  width: 42px;
-  height: 42px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 10px;
   background: white;
   padding: 3px;
   flex-shrink: 0;
