@@ -256,16 +256,31 @@
     }
 
     /* ===== CORRECTION 6 : Centrage header Missions = Rapport ===== */
-    .missions-header {
+    #missions .missions-header,
+    #missions .missions-header * {
       text-align: center !important;
+    }
+    #missions .missions-header {
       margin-bottom: 48px !important;
+      display: block !important;
+      width: 100% !important;
     }
-    .missions-header .section-label {
+    #missions .missions-header .section-label {
+      display: flex !important;
       justify-content: center !important;
+      align-items: center !important;
     }
-    .missions-header .section-desc {
+    #missions .missions-header .section-title {
+      display: block !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+    #missions .missions-header .section-desc {
+      display: block !important;
+      text-align: center !important;
       margin-left: auto !important;
       margin-right: auto !important;
+      max-width: 600px !important;
     }
 
   </style>
