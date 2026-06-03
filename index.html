@@ -55,33 +55,64 @@
       overflow-wrap: break-word;
     }
 
-    /* ===== CORRECTION 4 : Réduction taille photos/avatars équipe ===== */
+    /* ===== CORRECTION 4 : Photo complète + carte compacte ===== */
 
-    /* Zone image des 3 cartes leaders : hauteur réduite de ~270px à 160px */
+    /* Zone image : hauteur auto pour afficher la photo entière */
     .team-card-img-wrap {
-      height: 160px !important;
-      overflow: hidden;
-    }
-
-    /* Photo réelle (Président) : couvre bien la zone réduite */
-    .team-card-img-wrap img {
       width: 100% !important;
-      height: 100% !important;
-      object-fit: cover !important;
-      display: block;
-    }
-
-    /* Avatar initiales (DK / BO) : centré dans la zone réduite */
-    .team-avatar-placeholder {
-      width: 100% !important;
-      height: 100% !important;
+      height: auto !important;
+      max-height: 200px !important;
+      overflow: hidden !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      font-size: 2.2rem !important;
+      background: #e8edf5 !important;
     }
 
-    /* Avatars membres distanciel : légèrement réduits */
+    /* Photo réelle : visible en entier, réduite, centrée */
+    .team-card-img-wrap img {
+      width: auto !important;
+      max-width: 100% !important;
+      height: auto !important;
+      max-height: 200px !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
+
+    /* Avatar initiales (DK / BO) : hauteur fixe, centré */
+    .team-avatar-placeholder {
+      width: 100% !important;
+      height: 200px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 2.8rem !important;
+    }
+
+    /* Zone texte sous la photo : padding réduit */
+    .team-card-info {
+      padding: 10px 14px 14px !important;
+    }
+
+    .team-card-info h3 {
+      font-size: 0.95rem !important;
+      margin: 4px 0 4px !important;
+    }
+
+    .team-card-info p {
+      font-size: 0.78rem !important;
+      line-height: 1.45 !important;
+      margin: 0 !important;
+    }
+
+    .team-role-badge {
+      font-size: 10px !important;
+      padding: 2px 8px !important;
+      margin-bottom: 4px !important;
+      display: inline-block;
+    }
+
+    /* Avatars membres distanciel : taille contenue */
     .team-remote-avatar {
       width: 40px !important;
       height: 40px !important;
