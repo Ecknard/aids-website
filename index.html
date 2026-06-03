@@ -12,9 +12,7 @@
   <title>AIDS — Alliance Internationale pour le Développement Social</title>
   <link rel="icon" type="image/jpeg" href="images/logo-aids.jpg" />
 
-  <!-- Vercel Web Analytics — suivi visiteurs gratuit et automatique -->
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
-
   <link rel="stylesheet" href="css/style.css" />
 
   <style>
@@ -29,12 +27,19 @@
       flex-shrink: 0;
     }
 
-    /* ===== CORRECTION 2 : Titres réduits ===== */
+    /* ===== CORRECTION 2 : Titres équilibrés ===== */
     .hero-title {
-      font-size: clamp(1.9rem, 3.8vw, 3rem) !important;
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.8px !important;
+      line-height: 1.2 !important;
+      text-wrap: balance !important;
     }
     .section-title {
-      font-size: clamp(1.4rem, 2.8vw, 2rem) !important;
+      font-size: clamp(1.25rem, 2.2vw, 1.55rem) !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.3px !important;
+      line-height: 1.3 !important;
     }
 
     /* ===== CORRECTION 3 : Anti-mots orphelins ===== */
@@ -49,6 +54,235 @@
       text-wrap: balance;
       overflow-wrap: break-word;
     }
+
+    /* ===== CORRECTION 4 : Photo sans espaces + animations ===== */
+
+    /* Carte globale : transition hover élévation */
+    .team-card {
+      transition: transform 0.35s cubic-bezier(.22,.68,0,1.2),
+                  box-shadow 0.35s ease !important;
+      will-change: transform;
+    }
+    .team-card:hover {
+      transform: translateY(-6px) scale(1.015) !important;
+      box-shadow: 0 20px 48px rgba(26,63,168,0.18) !important;
+    }
+
+    /* Zone image : hauteur fixe, pas d'espace autour */
+    .team-card-img-wrap {
+      width: 100% !important;
+      height: 220px !important;
+      overflow: hidden !important;
+      display: block !important;
+      position: relative !important;
+      background: #c8d3e8 !important;
+    }
+
+    /* Photo : couvre toute la zone, cadrage haut (visage) */
+    .team-card-img-wrap img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center 20% !important; /* cadre le visage, pas les pieds */
+      display: block !important;
+      transition: transform 0.5s cubic-bezier(.22,.68,0,1.2),
+                  filter 0.4s ease !important;
+    }
+    .team-card:hover .team-card-img-wrap img {
+      transform: scale(1.06) !important;
+      filter: brightness(1.05) !important;
+    }
+
+    /* Overlay dégradé discret au hover sur la photo */
+    .team-card-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 55%,
+        rgba(26, 63, 168, 0.22) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .team-card:hover .team-card-img-wrap::after {
+      opacity: 1;
+    }
+
+    /* Avatar initiales (DK / BO) */
+    .team-avatar-placeholder {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 3rem !important;
+      transition: letter-spacing 0.4s ease, font-size 0.4s ease !important;
+    }
+    .team-card:hover .team-avatar-placeholder {
+      font-size: 3.4rem !important;
+      letter-spacing: 6px !important;
+    }
+
+    /* Zone texte : padding compact */
+    .team-card-info {
+      padding: 10px 14px 14px !important;
+    }
+    .team-card-info h3 {
+      font-size: 0.95rem !important;
+      margin: 4px 0 4px !important;
+    }
+    .team-card-info p {
+      font-size: 0.78rem !important;
+      line-height: 1.45 !important;
+      margin: 0 !important;
+    }
+    .team-role-badge {
+      font-size: 10px !important;
+      padding: 2px 8px !important;
+      margin-bottom: 4px !important;
+      display: inline-block;
+    }
+
+    /* Avatars membres distanciel */
+    .team-remote-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    .team-remote-card:hover {
+      transform: translateX(4px) !important;
+      box-shadow: 0 4px 16px rgba(26,63,168,0.12) !important;
+    }
+    .team-remote-avatar {
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      font-size: 13px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-weight: 700 !important;
+      flex-shrink: 0 !important;
+      transition: transform 0.3s ease !important;
+    }
+    .team-remote-card:hover .team-remote-avatar {
+      transform: scale(1.15) !important;
+    }
+
+    /* ===== CORRECTION 5 : Hiérarchie visuelle — RNA & stats hero ===== */
+
+    /* CARTE À PROPOS — numéro RNA */
+    .about-stat-card {
+      padding: 14px 20px 16px !important;
+    }
+
+    /* Le numéro : de géant à "signature élégante" */
+    .about-stat-card .number {
+      font-size: clamp(1.05rem, 2vw, 1.3rem) !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.05em !important;
+      color: var(--blue-bright, #1a5dc8) !important;
+      line-height: 1.2 !important;
+      margin-bottom: 4px !important;
+      font-variant-numeric: tabular-nums !important;
+    }
+
+    /* Le label "Numéro RNA officiel" : repère visuel principal */
+    .about-stat-card .label {
+      font-size: 10px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: var(--text-soft, #6b7280) !important;
+      line-height: 1.4 !important;
+    }
+
+    /* ── HERO STATS refonte complète ── */
+
+    /* Conteneur : pills alignées, compactes */
+    .hero-stats {
+      display: flex !important;
+      align-items: stretch !important;
+      gap: 8px !important;
+      margin-top: 28px !important;
+      flex-wrap: wrap !important;
+    }
+
+    /* Chaque stat : pill avec fond semi-transparent */
+    .hero-stats > div {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 9px 16px !important;
+      background: rgba(255,255,255,0.07) !important;
+      border: 1px solid rgba(255,255,255,0.13) !important;
+      border-radius: 10px !important;
+      backdrop-filter: blur(6px) !important;
+      transition: background 0.25s ease, border-color 0.25s ease !important;
+    }
+    .hero-stats > div:hover {
+      background: rgba(255,255,255,0.12) !important;
+      border-color: rgba(255,255,255,0.25) !important;
+    }
+
+    /* Valeur chiffrée : petite, nette, monospace */
+    .hero-stat-value {
+      font-size: 1.15rem !important;      /* ~18px — net sans dominer */
+      font-weight: 800 !important;
+      line-height: 1 !important;
+      letter-spacing: -0.3px !important;
+      font-variant-numeric: tabular-nums !important;
+      white-space: nowrap !important;
+      color: #ffffff !important;
+    }
+
+    /* Séparateur vertical entre valeur et label */
+    .hero-stats > div::before {
+      display: none !important;            /* retire tout pseudo-élément existant */
+    }
+
+    /* Label : badge uppercase minuscule, couleur dorée discrète */
+    .hero-stat-label {
+      font-size: 8.5px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.14em !important;
+      text-transform: uppercase !important;
+      color: rgba(255,255,255,0.5) !important;
+      line-height: 1.35 !important;
+      max-width: 72px !important;          /* force le retour à la ligne après 2 mots */
+      white-space: normal !important;
+    }
+
+    /* ===== CORRECTION 6 : Centrage header Missions = Rapport ===== */
+    #missions .missions-header,
+    #missions .missions-header * {
+      text-align: center !important;
+    }
+    #missions .missions-header {
+      margin-bottom: 48px !important;
+      display: block !important;
+      width: 100% !important;
+    }
+    #missions .missions-header .section-label {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    #missions .missions-header .section-title {
+      display: block !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+    #missions .missions-header .section-desc {
+      display: block !important;
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      max-width: 600px !important;
+    }
+
   </style>
 </head>
 <body>
@@ -140,16 +374,61 @@
         </div>
       </div>
 
-      <div class="hero-visual">
-        <div class="hero-floating-badge">🌍 Impact mondial</div>
-        <div class="hero-card-main">
-          <img src="images/president.jpg" alt="MENSAH Kodjo Samuel, Président" class="hero-card-img" />
-          <div class="hero-card-overlay">
-            <h3>MENSAH Kodjo Samuel</h3>
-            <p>Président — Alliance Internationale pour le Développement Social</p>
-          </div>
+      <div class="hero-visual" style="position:relative;">
+        <div class="map-container">
+          <img src="images/impact_monde.png" alt="Carte impact mondial AIDS" class="map-img" />
+          <svg class="map-dots" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="dot dot-pulse" cx="48" cy="28" r="1.2" fill="#F0B429"/>
+            <circle class="dot dot-ring" cx="48" cy="28" r="1.2" fill="none" stroke="#F0B429" stroke-width=".4"/>
+            <circle class="dot dot-pulse" cx="50" cy="25" r="1" fill="#4A9FFF" style="animation-delay:.4s"/>
+            <circle class="dot dot-ring" cx="50" cy="25" r="1" fill="none" stroke="#4A9FFF" stroke-width=".4" style="animation-delay:.4s"/>
+            <circle class="dot dot-pulse" cx="22" cy="30" r="1.2" fill="#F0B429" style="animation-delay:.8s"/>
+            <circle class="dot dot-ring" cx="22" cy="30" r="1.2" fill="none" stroke="#F0B429" stroke-width=".4" style="animation-delay:.8s"/>
+            <circle class="dot dot-pulse" cx="47" cy="52" r="1" fill="#4A9FFF" style="animation-delay:1.2s"/>
+            <circle class="dot dot-ring" cx="47" cy="52" r="1" fill="none" stroke="#4A9FFF" stroke-width=".4" style="animation-delay:1.2s"/>
+            <path class="conn-line" d="M48,28 Q35,10 22,30" fill="none" stroke="rgba(240,180,41,.35)" stroke-width=".3" stroke-dasharray="3,2"/>
+            <path class="conn-line" d="M48,28 Q48,40 47,52" fill="none" stroke="rgba(74,159,255,.35)" stroke-width=".3" stroke-dasharray="3,2" style="animation-delay:.5s"/>
+            <path class="conn-line" d="M22,30 Q34,40 47,52" fill="none" stroke="rgba(74,159,255,.25)" stroke-width=".3" stroke-dasharray="3,2" style="animation-delay:1s"/>
+          </svg>
+          <div class="map-label" style="top:24%;left:46%;animation-delay:.2s;"><span class="map-label-dot" style="background:#F0B429;"></span>France</div>
+          <div class="map-label" style="top:18%;left:50%;animation-delay:.6s;"><span class="map-label-dot" style="background:#4A9FFF;"></span>Allemagne</div>
+          <div class="map-label" style="top:24%;left:8%;animation-delay:1s;"><span class="map-label-dot" style="background:#F0B429;"></span>Washington</div>
+          <div class="map-label" style="top:49%;left:45%;animation-delay:1.4s;"><span class="map-label-dot" style="background:#4A9FFF;"></span>Lomé</div>
         </div>
       </div>
+
+      <style>
+        .map-container {
+          position: relative;
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 0 0 1px rgba(74,159,255,.2), 0 24px 60px rgba(10,31,68,.5), inset 0 1px 0 rgba(255,255,255,.08);
+          animation: mapGlow 5s ease-in-out infinite;
+        }
+        @keyframes mapGlow {
+          0%,100% { box-shadow: 0 0 0 1px rgba(74,159,255,.2), 0 24px 60px rgba(10,31,68,.5), 0 0 40px rgba(30,111,217,.1); }
+          50%      { box-shadow: 0 0 0 1px rgba(74,159,255,.4), 0 24px 60px rgba(10,31,68,.6), 0 0 60px rgba(30,111,217,.25); }
+        }
+        .map-img { width:100%;display:block;border-radius:20px;filter:saturate(1.1) brightness(1.05); }
+        .map-dots { position:absolute;inset:0;width:100%;height:100%;pointer-events:none; }
+        .dot-pulse { animation: dotPulse 2s ease-in-out infinite; }
+        @keyframes dotPulse { 0%,100%{opacity:1;r:1.2;}50%{opacity:.6;r:1.8;} }
+        .dot-ring { animation: dotRing 2s ease-out infinite; transform-origin:center; }
+        @keyframes dotRing { 0%{opacity:.8;transform:scale(1);}100%{opacity:0;transform:scale(4);} }
+        .conn-line { stroke-dashoffset:20;animation:dashFlow 3s linear infinite; }
+        @keyframes dashFlow { to{stroke-dashoffset:-20;} }
+        .map-label {
+          position:absolute;display:flex;align-items:center;gap:4px;
+          background:rgba(10,31,68,.75);backdrop-filter:blur(6px);
+          border:1px solid rgba(255,255,255,.12);border-radius:20px;
+          padding:3px 9px 3px 6px;font-family:'Syne',sans-serif;
+          font-size:10px;font-weight:600;color:white;white-space:nowrap;
+          animation:labelFloat 3s ease-in-out infinite;transform:translateY(0);
+        }
+        .map-label-dot { width:6px;height:6px;border-radius:50%;flex-shrink:0;animation:dotPulse 2s ease-in-out infinite; }
+        @keyframes labelFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);} }
+      </style>
+
     </div>
   </section>
 
@@ -206,7 +485,6 @@
         <p class="section-desc" style="color:rgba(255,255,255,.6);margin:0 auto;">Une présentation de nos actions, notre équipe et notre vision pour un développement humain durable.</p>
       </div>
       <div class="reveal" style="max-width:800px;margin:0 auto;">
-        <!-- REMPLACEZ par votre iframe YouTube : <iframe width="100%" height="450" src="https://www.youtube.com/embed/VOTRE_ID" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe> -->
         <div class="video-placeholder">
           <div class="video-placeholder-inner">
             <div class="video-play-btn">▶</div>
@@ -233,7 +511,7 @@
             <span class="news-tag" style="background:var(--blue-pale);color:var(--blue-bright);">2024</span>
             <h3>Statuts de l'association</h3>
             <p>Statuts mis à jour et signés le 23 janvier 2024 par les membres fondateurs.</p>
-            <a href="#" class="rapport-dl-btn">📥 Télécharger</a>
+            <a href="docs/statuts.pdf" class="rapport-dl-btn" target="_blank">📥 Télécharger</a>
           </div>
         </div>
         <div class="rapport-card">
@@ -242,7 +520,7 @@
             <span class="news-tag" style="background:var(--blue-pale);color:var(--blue-bright);">2023</span>
             <h3>Publication Journal Officiel</h3>
             <p>Annonce n°2111 du 20 juin 2023 — reconnaissance officielle de l'association.</p>
-            <a href="#" class="rapport-dl-btn">📥 Télécharger</a>
+            <a href="docs/journal-officiel.pdf" class="rapport-dl-btn" target="_blank">📥 Télécharger</a>
           </div>
         </div>
         <div class="rapport-card">
@@ -251,7 +529,7 @@
             <span class="news-tag" style="background:var(--blue-pale);color:var(--blue-bright);">2024</span>
             <h3>Procès-verbal AG constitutive</h3>
             <p>Compte-rendu de l'Assemblée Générale Extraordinaire du 3 février 2024.</p>
-            <a href="#" class="rapport-dl-btn">📥 Télécharger</a>
+            <a href="docs/proces-verbal.pdf" class="rapport-dl-btn" target="_blank">📥 Télécharger</a>
           </div>
         </div>
         <div class="rapport-card" style="opacity:.7;">
@@ -268,13 +546,15 @@
   </section>
 
   <!-- ===== MISSIONS ===== -->
-  <section id="missions">
+
+  
+  <section id="missions" style="background:var(--off-white);padding:80px 5%;">
     <div class="missions-bg-decor"></div>
     <div class="container">
-      <div class="missions-header reveal">
-        <div class="section-label">Ce que nous faisons</div>
+      <div style="text-align:center;margin-bottom:48px;" class="reveal">
+        <div class="section-label" style="justify-content:center;">Ce que nous faisons</div>
         <h2 class="section-title">Nos axes d'intervention</h2>
-        <p class="section-desc">Nous agissons sur plusieurs fronts pour créer un impact durable et mesurable sur les populations les plus vulnérables.</p>
+        <p class="section-desc" style="margin:0 auto;">Nous agissons sur plusieurs fronts pour créer un impact durable et mesurable sur les populations les plus vulnérables.</p>
       </div>
       <div class="missions-grid">
         <div class="mission-card reveal"><div class="mission-icon">📚</div><h3>Accès à l'éducation</h3><p>Nous facilitons l'accès à l'éducation des techniques de base — lecture, écriture et calcul — pour les orphelins et personnes isolées socialement.</p></div>
@@ -298,15 +578,15 @@
       <div class="team-grid">
         <div class="team-card reveal">
           <div class="team-card-img-wrap"><img src="images/president.jpg" alt="MENSAH Kodjo Samuel" /></div>
-          <div class="team-card-info"><span class="team-role-badge">Président</span><h3>MENSAH Kodjo Samuel</h3><p>Basé à Orléans, France. Initiateur et coordinateur général de l'association.</p></div>
+          <div class="team-card-info"><span class="team-role-badge">Président</span><h3>MENSAH Kodjo Samuel</h3><p>Coordinateur général de l'association.</p></div>
         </div>
         <div class="team-card reveal">
           <div class="team-card-img-wrap"><div class="team-avatar-placeholder">DK</div></div>
-          <div class="team-card-info"><span class="team-role-badge">Trésorier</span><h3>DZIWONOU Kisito F.</h3><p>Basé au Havre, France. Responsable de la gestion financière et comptable.</p></div>
+          <div class="team-card-info"><span class="team-role-badge">Trésorier</span><h3>DZIWONOU Kisito F.</h3><p>Responsable de la gestion financière et comptable.</p></div>
         </div>
         <div class="team-card reveal">
           <div class="team-card-img-wrap"><div class="team-avatar-placeholder">BO</div></div>
-          <div class="team-card-info"><span class="team-role-badge">Secrétaire Exécutif</span><h3>BOGUI Omar Steeves K.</h3><p>Basé à Noisy-le-Grand, France. Gestion administrative et coordination opérationnelle.</p></div>
+          <div class="team-card-info"><span class="team-role-badge">Secrétaire Exécutif</span><h3>BOGUI Omar Steeves K.</h3><p>Gestion administrative et coordination opérationnelle.</p></div>
         </div>
       </div>
       <div class="team-remote reveal" style="margin-top:32px;">
@@ -322,7 +602,7 @@
     </div>
   </section>
 
-  <!-- ===== PARTENAIRES — carousel infini ===== -->
+  <!-- ===== PARTENAIRES ===== -->
   <section id="partners" style="background:var(--off-white);padding:80px 5%;overflow:hidden;">
     <div class="container">
       <div style="text-align:center;margin-bottom:56px;" class="reveal">
@@ -331,8 +611,6 @@
         <p class="section-desc" style="margin:0 auto;">Nous collaborons avec des institutions publiques, associations et fondations partageant nos valeurs.</p>
       </div>
     </div>
-
-    <!-- Carousel pleine largeur -->
     <div class="partners-track-wrap">
       <div class="partners-track">
         <div class="partner-logo-card"><div class="partner-logo-inner">🏛️<span>Orléans Mairie</span></div></div>
@@ -366,7 +644,6 @@
         <div class="partner-logo-card"><div class="partner-logo-inner">🎨<span>Zeus Creative Studio</span></div></div>
       </div>
     </div>
-
     <div class="container">
       <p style="text-align:center;color:var(--text-soft);font-size:13px;margin-top:32px;" class="reveal">
         Vous souhaitez devenir partenaire ? <a href="#contact" style="color:var(--blue-bright);font-weight:600;">Contactez-nous →</a>
@@ -406,7 +683,7 @@
     </div>
   </section>
 
-  <!-- ===== FAIRE UN DON — Widget HelloAsso ===== -->
+  <!-- ===== FAIRE UN DON ===== -->
   <section id="don">
     <div class="container">
       <div class="don-wrap reveal">
@@ -447,7 +724,7 @@
     </div>
   </section>
 
-  <!-- ===== CONTACT — Formspree ===== -->
+  <!-- ===== CONTACT ===== -->
   <section id="contact" style="background:var(--off-white);">
     <div class="container">
       <div class="contact-grid">
@@ -455,7 +732,6 @@
           <div class="section-label">Nous écrire</div>
           <h2 class="section-title">Contactez-nous</h2>
           <p>Une question, une idée de partenariat, ou vous souhaitez simplement en savoir plus sur nos actions ? Notre équipe est à votre écoute.</p>
-
           <div class="contact-detail">
             <div class="contact-detail-icon">📍</div>
             <div><h4>Siège social</h4><p>4 allée Jacques Brel<br/>93160 Noisy-le-Grand, France</p></div>
@@ -468,7 +744,6 @@
             <div class="contact-detail-icon">🏛️</div>
             <div><h4>Numéro RNA</h4><p>W922020314</p></div>
           </div>
-
           <div class="social-links">
             <a href="#" class="social-link" aria-label="Facebook" title="Facebook">
               <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -481,7 +756,6 @@
             </a>
           </div>
         </div>
-
         <div class="reveal">
           <form action="https://formspree.io/f/mpqbjvok" method="POST" class="contact-form">
             <input type="hidden" name="_subject" value="Nouveau message — Site AIDS" />
