@@ -55,56 +55,90 @@
       overflow-wrap: break-word;
     }
 
-    /* ===== CORRECTION 4 : Photo complète + carte compacte ===== */
+    /* ===== CORRECTION 4 : Photo sans espaces + animations ===== */
 
-    /* Zone image : hauteur auto pour afficher la photo entière */
+    /* Carte globale : transition hover élévation */
+    .team-card {
+      transition: transform 0.35s cubic-bezier(.22,.68,0,1.2),
+                  box-shadow 0.35s ease !important;
+      will-change: transform;
+    }
+    .team-card:hover {
+      transform: translateY(-6px) scale(1.015) !important;
+      box-shadow: 0 20px 48px rgba(26,63,168,0.18) !important;
+    }
+
+    /* Zone image : hauteur fixe, pas d'espace autour */
     .team-card-img-wrap {
       width: 100% !important;
-      height: auto !important;
-      max-height: 200px !important;
+      height: 220px !important;
       overflow: hidden !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      background: #e8edf5 !important;
-    }
-
-    /* Photo réelle : visible en entier, réduite, centrée */
-    .team-card-img-wrap img {
-      width: auto !important;
-      max-width: 100% !important;
-      height: auto !important;
-      max-height: 200px !important;
-      object-fit: contain !important;
       display: block !important;
+      position: relative !important;
+      background: #c8d3e8 !important;
     }
 
-    /* Avatar initiales (DK / BO) : hauteur fixe, centré */
+    /* Photo : couvre toute la zone, cadrage haut (visage) */
+    .team-card-img-wrap img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center 15% !important; /* cadre le visage, pas les pieds */
+      display: block !important;
+      transition: transform 0.5s cubic-bezier(.22,.68,0,1.2),
+                  filter 0.4s ease !important;
+    }
+    .team-card:hover .team-card-img-wrap img {
+      transform: scale(1.06) !important;
+      filter: brightness(1.05) !important;
+    }
+
+    /* Overlay dégradé discret au hover sur la photo */
+    .team-card-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 55%,
+        rgba(26, 63, 168, 0.22) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .team-card:hover .team-card-img-wrap::after {
+      opacity: 1;
+    }
+
+    /* Avatar initiales (DK / BO) */
     .team-avatar-placeholder {
       width: 100% !important;
-      height: 200px !important;
+      height: 100% !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      font-size: 2.8rem !important;
+      font-size: 3rem !important;
+      transition: letter-spacing 0.4s ease, font-size 0.4s ease !important;
+    }
+    .team-card:hover .team-avatar-placeholder {
+      font-size: 3.4rem !important;
+      letter-spacing: 6px !important;
     }
 
-    /* Zone texte sous la photo : padding réduit */
+    /* Zone texte : padding compact */
     .team-card-info {
       padding: 10px 14px 14px !important;
     }
-
     .team-card-info h3 {
       font-size: 0.95rem !important;
       margin: 4px 0 4px !important;
     }
-
     .team-card-info p {
       font-size: 0.78rem !important;
       line-height: 1.45 !important;
       margin: 0 !important;
     }
-
     .team-role-badge {
       font-size: 10px !important;
       padding: 2px 8px !important;
@@ -112,18 +146,29 @@
       display: inline-block;
     }
 
-    /* Avatars membres distanciel : taille contenue */
+    /* Avatars membres distanciel */
+    .team-remote-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    .team-remote-card:hover {
+      transform: translateX(4px) !important;
+      box-shadow: 0 4px 16px rgba(26,63,168,0.12) !important;
+    }
     .team-remote-avatar {
       width: 40px !important;
       height: 40px !important;
       min-width: 40px !important;
       font-size: 13px !important;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      flex-shrink: 0;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-weight: 700 !important;
+      flex-shrink: 0 !important;
+      transition: transform 0.3s ease !important;
+    }
+    .team-remote-card:hover .team-remote-avatar {
+      transform: scale(1.15) !important;
     }
   </style>
 </head>
